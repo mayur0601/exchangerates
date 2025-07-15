@@ -1,0 +1,18 @@
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation project(':domain')
+    implementation project(':port')
+    implementation project(':rest')
+}
+
+test{
+    useJUnitPlatform()
+}
+
+bootJar {
+    enabled = true
+    archiveBaseName= "exchangerates"
+}
+

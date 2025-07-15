@@ -1,0 +1,11 @@
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
+    implementation("com.fasterxml.jackson.core:jackson-annotations")
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testImplementation("org.mockito:mockito-junit-jupiter")
+}
+
+bootJar {
+    enabled=false
+}

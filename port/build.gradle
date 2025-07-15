@@ -1,0 +1,18 @@
+dependencies {
+    implementation 'org.springframework:spring-web'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    implementation("com.fasterxml.jackson.core:jackson-core")
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+    implementation project(':domain')
+}
+
+test{
+    useJUnitPlatform()
+}
+
+bootJar {
+    enabled = false
+}
