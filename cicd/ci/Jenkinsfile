@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         GITHUB_CREDENTIALS_ID = 'github-token'
-        REPO_URL = 'https://github.com/kodedge-swapneel/exchangerates.git'
+        REPO_URL = 'https://github.com/mayur0601/exchangerates.git'
         SONAR_AUTH_TOKEN = credentials('sonarqube')
         DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
-        IMAGE_NAME = 'kodedge/exchangerates'
+        IMAGE_NAME = 'mayur0601/exchangerates'
 
         //following is not required. You can skip.
         GRADLE_HOME = '/opt/gradle'
@@ -153,33 +153,33 @@ pipeline {
             }
         }
 
-        stage('Update image tag') {
-            steps {
-                script {
-                    def imageTag = env.COMMIT_HASH
-
-                     sh 'git checkout main'
-
-                    // Use 'sed' to replace the image tag in values.yaml
-                    sh """
-                        sed -i 's/tag:.*/tag: ${imageTag}/' k8chart/values.yaml
-                    """
-
-                    withCredentials([
-                        gitUsernamePassword(credentialsId: GITHUB_CREDENTIALS_ID, gitToolName: 'Default')
-                    ]) {
-                        sh """
-                             git config user.email "kodedge-bot-ci@kodedge.com"
-                             git config user.name "kodedge-bot-ci"
-                             git add k8chart/values.yaml
-                             git commit -m "Update image tag to version ${imageTag}"
-                             git push origin main
-                        """
-                    }
-                }
-            }
-        }
-    }
+//         stage('Update image tag') {
+//             steps {
+//                 script {
+//                     def imageTag = env.COMMIT_HASH
+//
+//                      sh 'git checkout main'
+//
+//                     // Use 'sed' to replace the image tag in values.yaml
+//                     sh """
+//                         sed -i 's/tag:.*/tag: ${imageTag}/' k8chart/values.yaml
+//                     """
+//
+//                     withCredentials([
+//                         gitUsernamePassword(credentialsId: GITHUB_CREDENTIALS_ID, gitToolName: 'Default')
+//                     ]) {
+//                         sh """
+//                              git config user.email "kodedge-bot-ci@kodedge.com"
+//                              git config user.name "kodedge-bot-ci"
+//                              git add k8chart/values.yaml
+//                              git commit -m "Update image tag to version ${imageTag}"
+//                              git push origin main
+//                         """
+//                     }
+//                 }
+//             }
+//         }
+//     }
 
     post {
         always {
