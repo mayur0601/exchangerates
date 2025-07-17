@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/kodedge-swapneel/exchangerates.git
+    repoURL: https://github.com/mayur0601/exchangerates.git
     targetRevision: main
     path: k8chart
   destination:
